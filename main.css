@@ -4,13 +4,11 @@
 
 /* 
 - need to make sure window does not shift text when minimized 
-    - minimum width
-- change font (add link to html)
-- if possible, use my image background pic */
+    - minimum width */
 
 body {
-    display: grid;
-    justify-content: space-around;  
+    /* display: grid;
+    justify-content: space-around;   */
     /* evenly space between each other (left & right) */
     height: 100vh;
     margin: 0;      /* remove automatic margin */
@@ -22,3 +20,23 @@ body {
     min-width: 800px;
 }
 
+button {
+    border-width: 5px;
+    font-family: 'Bangers', cursive;
+    font-size: 90px;  
+    text-align : center;
+    border-radius : 90px;
+    background-color : #DC4734;
+    color : white;
+    padding : 15px 100px;
+    /* make it auto center later */
+    margin-left: 35%;
+    margin-top: 200px;
+}
+
+button:hover {
+    background: #434343;
+    letter-spacing: 2px;
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+}
