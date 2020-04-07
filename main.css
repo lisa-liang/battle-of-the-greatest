@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+/* 
+- need to make sure window does not shift text when minimized 
+    - minimum width
+- change font (add link to html)
+- if possible, use my image background pic */
+
+body {
+    display: grid;
+    justify-content: space-around;  
+    /* evenly space between each other (left & right) */
+    height: 100vh;
+    margin: 0;      /* remove automatic margin */
+    font-family: 'Bangers', cursive;     
+    background-image: linear-gradient(#262930,#444A57);
+}
+
+.background {
+    min-width: 800px;
+}
+
