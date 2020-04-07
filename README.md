@@ -4,13 +4,13 @@
 ---
 Battle of the Greatest is dependent on the luck of draw. Two players will compete against each other to see who chooses the bigger card. 
 
-![scratch](images/wireframe.jpeg)
+![scratch](images/READme/wireframe.jpeg)
 
 
 
 ## Wireframe
 ---
-![prototype](images/prototype.png)
+![prototype](images/READme/prototype.png)
 
 
 
@@ -24,7 +24,7 @@ Battle of the Greatest is dependent on the luck of draw. Two players will compet
 ## Instruction tab:
 ---
     
-![suits](images/carte-symbole.png)
+![suits](images/READme/carte-symbole.png)
 
 
     - showing suits from smallest to biggest
