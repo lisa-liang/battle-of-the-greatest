@@ -16,13 +16,12 @@ class Card {
   }
 }
 
-// generate deck of shuffled cards
+// create deck of shuffled cards
 class Deck {
   constructor() {
     this.deck = [];
   }
-  
-  generateDeck(suits, values) { 
+  createDeck(suits, values) { 
     for (let suit of suits) {
       for (let value of values) {
         this.deck.push(new Card(suit, value));
@@ -42,7 +41,7 @@ class Deck {
       }
       return this.deck;
   }
-
+  
   deal(player) {
     while (player.card.length < 1) {
       const cardInHand = this.deck.splice(0,1);
@@ -51,13 +50,34 @@ class Deck {
   }
 }
 
+
+/* 
+compare numbers
+convert J, Q, K, A into integer values
+if tied, compare suits
+make an order from smallest to greatest for suits
+ */
+const compare = () => {
+  if (player1.card > player2.card) {
+    player1.score += 1;
+  } else if (player1.card < player2.card) {
+    player2.score += 1;
+  } else {
+    // placeholder for now
+    break
+  }
+}
+
+
+
+
 // define variables
 const player1 = new Player('Lisa');
 const player2 = new Player('Computer');
 const deck = new Deck(suits, values);
 
 // actions to start game
-deck.generateDeck(suits, values);
+deck.createDeck(suits, values);
 deck.shuffle();
 deck.deal(player1);
 deck.deal(player2);
