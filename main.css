@@ -14,10 +14,7 @@ body {
     margin: 0;      /* remove automatic margin */
     font-family: 'Bangers', cursive;     
     background-image: linear-gradient(#262930,#444A57);
-}
-
-.background {
-    min-width: 800px;
+    min-width: 1500px;
 }
 
 button {
@@ -29,8 +26,8 @@ button {
     background-color : #DC4734;
     color : white;
     padding : 15px 100px;
-    /* make it auto center later */
-    margin-left: 35%;
+    /* make it auto center later + even when window is minimized */
+    margin-left: 37%;
     margin-top: 200px;
 }
 
@@ -39,4 +36,16 @@ button:hover {
     letter-spacing: 2px;
     box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
     transition: all 0.4s ease 0s;
+}
+
+h2 {
+    display: inline-block;
+    background-color:whitesmoke;
+    padding: 10px 60px;
+    margin: 150px;
+    letter-spacing: 2px; 
+}
+
+#p2-tab {
+    float: right;
 }
