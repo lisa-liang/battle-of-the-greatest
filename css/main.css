@@ -63,3 +63,11 @@ h2 {
     justify-content: space-evenly;
 }
 
+/* disable it first. shows up after disabling start button */
+#stacked-cards {
+    position: absolute;
+    /* 1520 x 333 */
+    width: 1000px;
+    height: 200px;
+    margin-left: 15%;
+}
