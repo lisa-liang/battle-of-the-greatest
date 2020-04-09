@@ -5,29 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battle of the Greatest</title>
 
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/main.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script defer src="app.js"></script>
 </head>
 
 <body>
     <div class="header">
-        <img src="images/title.png" alt="title">
+        <img src="images/title.png" id="title" alt="title" id="title">
         <img src="images/stacked-cards.png" id="stacked-cards" alt="stacked-cards" id="stacked-cards">
         <h3 class="direction">CHOOSE FROM DECK <img src="images/fingerpoint.png" id="finger" alt="fingerpoint" id="finger"></h3>
-        <img src="images/P1 tab.png" id="p1-tab" alt="p1 tab" id="p1-tab">
         <button id="start-button">START</button>
     </div>
+
+    <section class="score-tab">
+        <div class="score p1-score">Player 1 : 0</div>
+        <div class="score p2-score"> Player 2 : 0</div>
+    </section>
 
     <section class="card-container">
         <div class="card player-card"></div>
         <div class="card comp-card"></div>
     </section>
-
-    <!-- <div class="score-tab">
-        <span id="p1-score-tab"><h2>Player 1 : 0</h2></span>
-        <span id="p2-score-tab"><h2>Player 2 : 0</h2></span>
-    </div> -->
 
 </body>
 </html>

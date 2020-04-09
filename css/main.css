@@ -44,45 +44,29 @@ button:hover {
 
 .card-container {
     justify-content: space-between;
-    margin: 6% 17% 2%;
-    display: none;
-}
-span {
-    display: inline-block;
-    justify-content: space-between;
-    background-color:whitesmoke;
-    padding: 10px 60px;
-    margin: 3px 213px 50px;
-    letter-spacing: 2px; 
+    margin: 2% 19% 2%;
     display: none;
 }
 
-#p2-score-tab {
-    float: right;
+#stacked-cards {
+    /* position: absolute; */
+    width: 730px;
+    height: 150px;
+    box-shadow: 10px 5px 5px rgb(48, 46, 46);
+    margin: 2% 24% 0;
+    display: none;
 }
 
 .direction {
     color: whitesmoke;
     font-size: 30px;
     letter-spacing: 3px;
-    margin: 0% 40% 1%;
-    display: none;
-}
-
-#p1-tab {
+    margin: 1% 40% 4%;
     display: none;
 }
 
 #finger {
     height: 40px;
-}
-
-#stacked-cards {
-    /* position: absolute; */
-    width: 1000px;
-    height: 200px;
-    margin: 2% 15% 0;
-    display: none;
 }
 
 /* class="cards" created in app js 69-71 */
@@ -91,3 +75,25 @@ img.cards {
     width: 100%;
 }
 
+.score {
+    background-color: white;
+    display: inline-block;
+    width: 11em;
+    background-color: #ffffff;
+    box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.15);
+    border-radius: 0.25em;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 30px;
+    margin: 0 10%;
+    width: 100%;
+}
+
+.score-tab {
+    justify-content: space-between;
+    display: none;
+}
+
+.p2-score {
+    float: right;
+}

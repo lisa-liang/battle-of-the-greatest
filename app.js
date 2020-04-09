@@ -149,9 +149,9 @@ const compCard = document.querySelector('.comp-card');
 const buttonElement = document.querySelector('#start-button');
 const stackedCards = document.querySelector('#stacked-cards');
 const directions = document.querySelector('.direction');
-const tabP1 = document.querySelector('#p1-tab');
 const cardsContainer = document.querySelector('.card-container');
-// const scoreTabs = document.querySelector('.score-tab');
+const title = document.querySelector('#title');
+const scoreTab = document.querySelector('.score-tab');
 
 
 /* start button event listener */
@@ -160,10 +160,11 @@ buttonElement.addEventListener('click', function(event) {
   shuffle();
       // using none as a placeholder for now
   buttonElement.style.display = 'none';
+  title.style.display = 'none';
   stackedCards.style.display = 'flex';
   directions.style.display = 'flex';
-  tabP1.style.display = 'flex';
   cardsContainer.style.display = 'flex';
+  scoreTab.style.display = 'flex';
 })
 
 /* stacked card event listener */
