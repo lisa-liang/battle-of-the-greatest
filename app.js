@@ -41,7 +41,7 @@ class Deck {
       }
       return this.deck;
   }
-  
+
   deal(player) {
     while (player.card.length < 1) {
       const cardInHand = this.deck.splice(0,1);
@@ -51,41 +51,68 @@ class Deck {
 }
 
 
-/* 
-compare numbers
-convert J, Q, K, A into integer values
-if tied, compare suits
-make an order from smallest to greatest for suits
- */
-const compare = () => {
-  if (player1.card > player2.card) {
-    player1.score += 1;
-  } else if (player1.card < player2.card) {
-    player2.score += 1;
-  } else {
-    // placeholder for now
-    break
-  }
-}
-
-
-
-
 // define variables
 const player1 = new Player('Lisa');
 const player2 = new Player('Computer');
 const deck = new Deck(suits, values);
 
 // actions to start game
-deck.createDeck(suits, values);
-deck.shuffle();
-deck.deal(player1);
-deck.deal(player2);
+// deck.createDeck(suits, values);
+// deck.shuffle();
+// deck.deal(player1);
+// deck.deal(player2);
 
 // console check
-console.log(player1);
-console.log(player2);
+// console.log(player1);
+// console.log(player2);
+
+
+// access properties
+const playerCard = document.querySelector('.player-card');
+const compCard = document.querySelector('.comp-card');
+
+/* event listener */
+const buttonElement = document.querySelector('#start-button');
+buttonElement.addEventListener('click', function(event) {
+  deck.createDeck(suits, values);
+  deck.shuffle();
+  deck.deal(player1);
+  deck.deal(player2);
+  playerCard.innerText = player1.card[0].value
+  console.log(playerCard);
+  console.log(player2);
+})
+
+
+// create event listener for deck
+/* click deck then console to playerCard div */
+
+
+// compCard = document.querySelector('.comp-card')
+// compCard.classList.addClass('J')
+// compCard.classList.addClass('Diamonds')
 
 
 
 
+
+/* 
+compare numbers
+convert J, Q, K, A into integer values
+if tied, compare suits
+make an order from smallest to greatest for suits
+ */
+// const compare = () => {
+//   if (player1.card > player2.card) {
+//     player1.score += 1;
+//   } else if (player1.card < player2.card) {
+//     player2.score += 1;
+//   } else {
+//     // placeholder for now
+//     break
+//   }
+// }
+
+
+compCard.classList.add('J')
+compCard.classList.add('Diamonds')
