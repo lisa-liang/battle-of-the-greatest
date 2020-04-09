@@ -50,38 +50,40 @@ class Deck {
   }
 }
 
-
 // define variables
 const player1 = new Player('Lisa');
 const player2 = new Player('Computer');
 const deck = new Deck(suits, values);
 
-// actions to start game
-// deck.createDeck(suits, values);
-// deck.shuffle();
-// deck.deal(player1);
-// deck.deal(player2);
-
-// console check
-// console.log(player1);
-// console.log(player2);
 
 
-// access properties
+// access DOM properties
+// when start button event listener is activated, random card value shows up on card-container 
 const playerCard = document.querySelector('.player-card');
 const compCard = document.querySelector('.comp-card');
 
-/* event listener */
+
+/* start button event listener */
 const buttonElement = document.querySelector('#start-button');
 buttonElement.addEventListener('click', function(event) {
   deck.createDeck(suits, values);
   deck.shuffle();
   deck.deal(player1);
   deck.deal(player2);
+  buttonElement.style.display = 'hidden';
   playerCard.innerText = player1.card[0].value
+  compCard.innerText = player2.card[0].value
+  // console check
   console.log(playerCard);
   console.log(player2);
 })
+
+
+// add class into card class then link the description to the image so that it pops up in card-container
+// test run
+compCard.classList.add('J')
+compCard.classList.add('Diamonds')
+
 
 
 // create event listener for deck
@@ -113,6 +115,3 @@ make an order from smallest to greatest for suits
 //   }
 // }
 
-
-compCard.classList.add('J')
-compCard.classList.add('Diamonds')
