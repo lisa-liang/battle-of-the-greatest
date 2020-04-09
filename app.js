@@ -61,16 +61,24 @@ const deck = new Deck(suits, values);
 // when start button event listener is activated, random card value shows up on card-container 
 const playerCard = document.querySelector('.player-card');
 const compCard = document.querySelector('.comp-card');
+const buttonElement = document.querySelector('#start-button');
+const stackedCards = document.querySelector('#stacked-cards');
 
 
 /* start button event listener */
-const buttonElement = document.querySelector('#start-button');
 buttonElement.addEventListener('click', function(event) {
   deck.createDeck(suits, values);
   deck.shuffle();
+  // "player 1's turn" tab shows up
+  // prompt player "CHOOSE FROM DECK"
+  // using none as a placeholder for now
+  buttonElement.style.display = 'none';
+  stackedCards.style.display = 'flex';
+})
+
+stackedCards.addEventListener('click', function(event) {
   deck.deal(player1);
   deck.deal(player2);
-  buttonElement.style.display = 'hidden';
   playerCard.innerText = player1.card[0].value
   compCard.innerText = player2.card[0].value
   // console check
@@ -78,9 +86,9 @@ buttonElement.addEventListener('click', function(event) {
   console.log(player2);
 })
 
-
 // add class into card class then link the description to the image so that it pops up in card-container
 // test run
+// compCard = document.querySelector('.comp-card')
 compCard.classList.add('J')
 compCard.classList.add('Diamonds')
 
@@ -90,9 +98,7 @@ compCard.classList.add('Diamonds')
 /* click deck then console to playerCard div */
 
 
-// compCard = document.querySelector('.comp-card')
-// compCard.classList.addClass('J')
-// compCard.classList.addClass('Diamonds')
+
 
 
 
