@@ -6,10 +6,8 @@
 - need to make sure window does not shift text when minimized 
     - minimum width */
 
+
 body {
-    /* display: grid;
-    justify-content: space-around;   */
-    /* evenly space between each other (left & right) */
     height: 100vh;
     margin: 0;      /* remove automatic margin */
     font-family: 'Bangers', cursive;     
@@ -26,7 +24,6 @@ button {
     background-color : #DC4734;
     color : white;
     padding : 15px 100px;
-    /* make it auto center later + even when window is minimized */
     margin-left: 37%;
     margin-top: 200px;
 }
@@ -38,37 +35,59 @@ button:hover {
     transition: all 0.4s ease 0s;
 }
 
-h2 {
-    display: inline-block;
-    background-color:whitesmoke;
-    padding: 10px 60px;
-    margin: 100px;
-    letter-spacing: 2px; 
-}
-
-#p2-tab {
-    float: right;
-}
-
 .card {
     width: 11em;
-    height: 14em;
     background-color: #ffffff;
     box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.15);
     border-radius: 0.25em;
 }
 
 .card-container {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-/* disable it first. shows up after disabling start button */
-#stacked-cards {
-    position: absolute;
-    /* 1520 x 333 */
-    width: 1000px;
-    height: 200px;
-    margin-left: 15%;
+    justify-content: space-between;
+    margin: 6% 17% 2%;
     display: none;
 }
+span {
+    display: inline-block;
+    justify-content: space-between;
+    background-color:whitesmoke;
+    padding: 10px 60px;
+    margin: 3px 213px 50px;
+    letter-spacing: 2px; 
+    display: none;
+}
+
+#p2-score-tab {
+    float: right;
+}
+
+.direction {
+    color: whitesmoke;
+    font-size: 30px;
+    letter-spacing: 3px;
+    margin: 0% 40% 1%;
+    display: none;
+}
+
+#p1-tab {
+    display: none;
+}
+
+#finger {
+    height: 40px;
+}
+
+#stacked-cards {
+    /* position: absolute; */
+    width: 1000px;
+    height: 200px;
+    margin: 2% 15% 0;
+    display: none;
+}
+
+/* class="cards" created in app js 69-71 */
+img.cards {
+    display: block;
+    width: 100%;
+}
+

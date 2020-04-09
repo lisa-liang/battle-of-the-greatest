@@ -5,119 +5,74 @@ class Player {
         this.card = []
     }
 }
+  
+const deck = [];
 
-const values = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
-const suits = ['Diamond', 'Clubs', 'Heart', 'Spade'];
-
-class Card {
-  constructor(suit, value) {
-    this.suit = suit;
-    this.value = value;
-  }
+function createDeck() {
+  deck.push({face: 'Ace', suit: 'Diamond', value: 14, imageSrc: "images/diamonds/diamonds-A.svg"})
+  deck.push({face: 'Two', suit: 'Diamond', value: 2, imageSrc: "images/diamonds/diamonds-r02.svg"})
+  deck.push({face: 'Three', suit: 'Diamond', value: 3, imageSrc: "images/diamonds/diamonds-r03.svg"})
+  deck.push({face: 'Four', suit: 'Diamond', value: 4, imageSrc: "images/diamonds/diamonds-r04.svg"})
+  deck.push({face: 'Five', suit: 'Diamond', value: 5, imageSrc: "images/diamonds/diamonds-r05.svg"})
+  deck.push({face: 'Six', suit: 'Diamond', value: 6, imageSrc: "images/diamonds/diamonds-r06.svg"})
 }
 
-// create deck of shuffled cards
-class Deck {
-  constructor() {
-    this.deck = [];
-  }
-  createDeck(suits, values) { 
-    for (let suit of suits) {
-      for (let value of values) {
-        this.deck.push(new Card(suit, value));
-      }
+function shuffle() {
+    let current;
+    let temp;
+    for (let i = deck.length - 1; i > 0; i--) {
+        current = Math.floor(Math.random() * deck.length);
+        temp = deck[i];
+        deck[i] = deck[current];
+        deck[current] = temp;
     }
-    return this.deck;
-  }
+    return deck;
+}
 
-  shuffle() {
-      let current;
-      let temp;
-      for (let i = this.deck.length - 1; i > 0; i--) {
-          current = Math.floor(Math.random() * this.deck.length);
-          temp = this.deck[i];
-          this.deck[i] = this.deck[current];
-          this.deck[current] = temp;
-      }
-      return this.deck;
-  }
-
-  deal(player) {
-    while (player.card.length < 1) {
-      const cardInHand = this.deck.splice(0,1);
-      player.card.push(cardInHand[0]);
-    }
-  }
+function deal(player) {
+    const cardInHand = deck.splice(0,1);
+    player.card.push(cardInHand);
 }
 
 // define variables
 const player1 = new Player('Lisa');
 const player2 = new Player('Computer');
-const deck = new Deck(suits, values);
 
 
-
-// access DOM properties
-// when start button event listener is activated, random card value shows up on card-container 
+// access DOM properties 
 const playerCard = document.querySelector('.player-card');
 const compCard = document.querySelector('.comp-card');
 const buttonElement = document.querySelector('#start-button');
 const stackedCards = document.querySelector('#stacked-cards');
+const directions = document.querySelector('.direction');
+const tabP1 = document.querySelector('#p1-tab');
+const cardsContainer = document.querySelector('.card-container');
+// const scoreTabs = document.querySelector('.score-tab');
 
 
 /* start button event listener */
 buttonElement.addEventListener('click', function(event) {
-  deck.createDeck(suits, values);
-  deck.shuffle();
-  // "player 1's turn" tab shows up
-  // prompt player "CHOOSE FROM DECK"
-  // using none as a placeholder for now
+  createDeck();  
+  shuffle();
+      // using none as a placeholder for now
   buttonElement.style.display = 'none';
   stackedCards.style.display = 'flex';
+  directions.style.display = 'flex';
+  tabP1.style.display = 'flex';
+  cardsContainer.style.display = 'flex';
 })
 
+/* stacked card event listener */
 stackedCards.addEventListener('click', function(event) {
-  deck.deal(player1);
-  deck.deal(player2);
-  playerCard.innerText = player1.card[0].value
-  compCard.innerText = player2.card[0].value
+  deal(player1);
+  deal(player2);
+  playerCard.insertAdjacentHTML('afterbegin', `<img class="cards" src="${player1.card[0][0].imageSrc}"/>`)
+  compCard.insertAdjacentHTML('afterbegin', `<img class="cards" src="${player2.card[0][0].imageSrc}"/>`) 
+
   // console check
-  console.log(playerCard);
+  console.log(player1);
   console.log(player2);
 })
 
-// add class into card class then link the description to the image so that it pops up in card-container
-// test run
-// compCard = document.querySelector('.comp-card')
-compCard.classList.add('J')
-compCard.classList.add('Diamonds')
 
-
-
-// create event listener for deck
-/* click deck then console to playerCard div */
-
-
-
-
-
-
-
-
-/* 
-compare numbers
-convert J, Q, K, A into integer values
-if tied, compare suits
-make an order from smallest to greatest for suits
- */
-// const compare = () => {
-//   if (player1.card > player2.card) {
-//     player1.score += 1;
-//   } else if (player1.card < player2.card) {
-//     player2.score += 1;
-//   } else {
-//     // placeholder for now
-//     break
-//   }
-// }
 
