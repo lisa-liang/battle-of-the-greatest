@@ -162,35 +162,44 @@ const p2Score = document.querySelector('.p2-score');
 buttonElement.addEventListener('click', function(event) {
   createDeck();  
   shuffle();
+  clearFrontPage();
+})
+
+function clearFrontPage() {
   buttonElement.style.display = 'none';
   logo.style.display = 'none';
   stackedCards.style.display = 'flex';
   directions.style.display = 'flex';
   cardsContainer.style.display = 'flex';
   scoreTab.style.display = 'flex';
-})
+}
 
 /* stacked card event listener */
 // make a for loop for 5 times
 stackedCards.addEventListener('click', function(event) {
-  deal(player1);
-  deal(player2);
-  playerCard.insertAdjacentHTML('afterbegin', `<img class="cards" src="${player1.card[0][0].imageSrc}"/>`)
-  compCard.insertAdjacentHTML('afterbegin', `<img class="cards" src="${player2.card[0][0].imageSrc}"/>`) 
+  playerOnesTurn();
+  playerTwosTurn();
   compare();
-  directions.style.display = 'none';
-  winnerAnnounced.style.display = 'flex';
- // update scores
-  p1Score.innerHTML = `Player 1 : ${player1.score}`;
-  p2Score.innerHTML = `Player 2 : ${player2.score}`;
+  announceWinner();
+})
 
   
+function announceWinner() {
+  directions.style.display = 'none';
+  winnerAnnounced.style.display = 'flex';
+  // update scores
+  p1Score.innerHTML = `Player 1 : ${player1.score}`;
+  p2Score.innerHTML = `Player 2 : ${player2.score}`;
+}
 
-  // console check
-  // console.log(player1);
-  // console.log(player2);
-  // console.log(player1.score)
-  // console.log(player2.score)
-})
+function playerOnesTurn() {
+  deal(player1);
+  playerCard.insertAdjacentHTML('afterbegin', `<img class="cards" src="${player1.card[0][0].imageSrc}"/>`);
+}
+
+function playerTwosTurn() {
+  deal(player2);
+  compCard.insertAdjacentHTML('afterbegin', `<img class="cards" src="${player2.card[0][0].imageSrc}"/>`);
+}
 
 
