@@ -2,58 +2,61 @@
 
 ## Overview 
 ---
-Battle of the Greatest is dependent on the luck of draw. Two players will compete against each other to see who chooses the bigger card. 
-
-![scratch](images/READme/wireframe.jpeg)
-
+Battle of the Greatest is dependent on the luck of draw. Two players will compete against each other to see who picks the higher card. First to get to 5 points wins the game.
 
 
 ## Wireframe
 ---
+
+![scratch](images/READme/wireframe.jpeg)
+
 ![prototype](images/READme/prototype.png)
 
 
 
-## Instructions
+## Information tab:
 ---
 
-- Whoever gets to 5 points first wins. Winner gets 1 point each round.
+![info](images/info-card.png)
 
 
+    1) Show suits from lowest to highest:
+    (diamond => clover => heart => spade)
 
-## Instruction tab:
----
-    
-![suits](images/READme/carte-symbole.png)
+    2) Show card rank from lowest to highest
+    (2-10 J, Q, K, A)
 
-
-    - showing suits from smallest to biggest
-    (diamonf, clover, heart, spade)
-
-    - showing card number smallest to biggest
-    (3-10 J, Q, K, A, 2)
+    3) Winner of each round gains one point. First to gain 5 points will be the final winner of the game.
 
 
 
 ## User story:
 ---
-- User clicks "start/choose a card button" to begin
+1) Click the start button to go into the main play room
     - button disappears when it's been clicked
-    - **BONUS:** click sound
+    - **BONUS** : click sound
 
-- User chooses a random card from deck. Computer will randomize a card for user if user doesn't pick within 10 seconds
-    - **BONUS:** layout cards + shuffle sound (first round)
+2) **INFO ICON** : information tab will show the instructions of the game
 
-- Card is revealed on user's side (enlarged)
-    - **BONUS:** card slides over (revealed)
+3) **REFRESH BUTTON** : reloads the game
 
-- Computer's turn to choose a card (randomize)
+4) **STACK OF CARDS** : Choose a random card from the deck. Both players will be assigned a random card
+    - **BONUS** : layout cards + shuffle sound 
 
-- Compare both cards to see which card is bigger
-    - **DIFFICULTY:** comparing suits
+5) Card is revealed for both players (enlarged)
+    - **BONUS** : card slides over (revealed)
 
-- alert('User wins')
+6) Compare both cards to see which card is higher
+    - **DIFFICULTY** : comparing suits
+
+7) **SCORE** : add one point to winner of each round
     - score += 1
 
-- After a player reaches 5 points, there will be another alert pop up or have a button pop up to annouce winner:
-    - alert('User is the winner!')
+8) After a player reaches 5 points, the winner will be announced on screen
+
+## Technologies:
+---
+- HTML
+- CSS
+- JavaScript
+- jQuery
