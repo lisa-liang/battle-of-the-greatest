@@ -81,6 +81,7 @@ function shuffle() {
 function deal(player) {
     const cardInHand = deck.splice(0,1);
     player.card.push(cardInHand);
+    shuffleSound.play();
 }
 
 function compare() {
@@ -89,51 +90,51 @@ function compare() {
   
   if (p1.value > p2.value) {
     player1.score += 1;
-    winnerAnnounced.insertAdjacentHTML('afterbegin', 'YOU GET A POINT');
+    winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point`);
   } else if (p1.value < p2.value) {
     player2.score += 1;
-    winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 2 GETS A POINT');
+    winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point`);
   } else {
 // spade
     if (p1.suit === 'spade' && p2.suit === 'diamond') {
       player1.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', 'YOU GET A POINT');
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point`);
     } else if (p1.suit === 'spade' && p2.suit === 'club') {
       player1.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', 'YOU GET A POINT');
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point`);
     } else if (p1.suit === 'spade' && p2.suit === 'heart') {
       player1.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', 'YOU GET A POINT');
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point`);
 // hearts
     } else if (p1.suit === 'heart' && p2.suit === 'diamond') {
       player1.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', 'YOU GET A POINT');
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point`);
     } else if (p1.suit === 'heart' && p2.suit === 'club') {
       player1.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', 'YOU GET A POINT');
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point`);
     } else if (p1.suit === 'heart' && p2.suit === 'spade') {
       player2.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 2 GETS A POINT');
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point`);
 // club
     } else if (p1.suit === 'club' && p2.suit === 'diamond') {
       player1.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', 'YOU GET A POINT');
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point`);
     } else if (p1.suit === 'club' && p2.suit === 'heart') {
       player2.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 2 GETS A POINT');
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point`);
     } else if (p1.suit === 'club' && p2.suit === 'spade') {
       player2.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 2 GETS A POINT');
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point`);
 // diamond
     } else if (p1.suit === 'diamond' && p2.suit === 'club') {
       player2.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 2 GETS A POINT');
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point`);
     } else if (p1.suit === 'diamond' && p2.suit === 'heart') {
       player2.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 2 GETS A POINT');
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point`);
     } else if (p1.suit === 'diamond' && p2.suit === 'spade') {
       player2.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 2 GETS A POINT');
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point`);
     } 
   }
 }
@@ -159,15 +160,20 @@ const p2Score = document.querySelector('.p2-score');
 const infoIcon = document.querySelector('#info-icon');
 const exitIcon = document.querySelector('#exit-icon');
 const infoCard = document.querySelector('#info-card');
+const clickSound = document.querySelector('#click-sound');
+const shuffleSound = document.querySelector('#shuffle-sound');
 
 
 /* start button event listener */
 startButton.addEventListener('click', function(event) {
+  clickSound.play();
   createDeck();  
   shuffle();
   clearFrontPage();
   showMainPage();
 })
+
+
 
 function clearFrontPage() {
   startButton.style.display = 'none';
@@ -184,6 +190,7 @@ function showMainPage() {
 
 // click info icon to get game info
 infoIcon.addEventListener('click', function(event) {
+  clickSound.play();
   infoCard.style.display = 'flex';
   infoIcon.style.display = 'none';
   exitIcon.style.display = 'flex';
@@ -191,6 +198,7 @@ infoIcon.addEventListener('click', function(event) {
 
 // info icon turns into an exit button. click on exit button to exit game info
 exitIcon.addEventListener('click', function(event) {
+  clickSound.play();
   infoCard.style.display = 'none';
   infoIcon.style.display = 'flex';
   exitIcon.style.display = 'none';
@@ -229,8 +237,8 @@ function announceWinner() {
 
 // update scores
 function updateScore() {
-  p1Score.innerHTML = `Player 1 : ${player1.score}`;
-  p2Score.innerHTML = `Player 2 : ${player2.score}`;
+  p1Score.innerHTML = `${player1.name} : ${player1.score}`;
+  p2Score.innerHTML = `${player2.name} : ${player2.score}`;
 }
 
 
