@@ -117,6 +117,22 @@ button {
     transform: scale(1.05);     
 }
 
+#winner-banner {
+    width: 730px;
+    height: 150px;
+    box-shadow: 10px 5px 5px rgb(48, 46, 46);
+    margin: 2% 24% 0;
+    display: none;
+}
+
+#loser-banner {
+    width: 730px;
+    height: 150px;
+    box-shadow: 10px 5px 5px rgb(48, 46, 46);
+    margin: 2% 24% 0;
+    display: none;
+}
+
 .direction {
     color: whitesmoke;
     font-size: 30px;
@@ -167,4 +183,5 @@ img.cards {
 .p2-score {
     float: right;
 }
+
 

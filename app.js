@@ -178,6 +178,9 @@ const clickSound = document.querySelector('#click-sound');
 const shuffleSound = document.querySelector('#shuffle-sound');
 const loserSound = document.querySelector('#loser-sound');
 const winnerSound = document.querySelector('#winner-sound');
+// winner/loser banners
+const winnerBanner = document.querySelector('#winner-banner');
+const loserBanner = document.querySelector('#loser-banner');
 
 
 /* -------------------- EVENT LISTENERS: INFO ICON/REFRESH ---------------------- */
@@ -279,14 +282,25 @@ function updateScore() {
     winnerAnnounced.innerHTML = '';
     winnerAnnounced.innerHTML = `You won the game`;
     winnerSound.play();
+    displayWinnerBanner();
   }
   if (player2.score === 5) {
     winnerAnnounced.innerHTML = '';
     winnerAnnounced.innerHTML = `You lost the game`;
     loserSound.play();
+    displayLoserBanner();
   } 
 }
 
+function displayWinnerBanner() {
+  stackedCards.style.display = 'none';
+  winnerBanner.style.display = 'flex';
+}
+
+function displayLoserBanner() {
+  stackedCards.style.display = 'none';
+  loserBanner.style.display = 'flex';
+}
 
 
 
