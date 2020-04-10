@@ -96,51 +96,51 @@ function compare() {
   
   if (p1.value > p2.value) {
     player1.score += 1;
-    winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point`);
+    winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point! Choose again`);
   } else if (p1.value < p2.value) {
     player2.score += 1;
-    winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point`);
+    winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point! Choose again`);
   } else {
 // spade
     if (p1.suit === 'spade' && p2.suit === 'diamond') {
       player1.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point`);
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point! Choose again`);
     } else if (p1.suit === 'spade' && p2.suit === 'club') {
       player1.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point`);
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point! Choose again`);
     } else if (p1.suit === 'spade' && p2.suit === 'heart') {
       player1.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point`);
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point! Choose again`);
 // hearts
     } else if (p1.suit === 'heart' && p2.suit === 'diamond') {
       player1.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point`);
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point! Choose again`);
     } else if (p1.suit === 'heart' && p2.suit === 'club') {
       player1.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point`);
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point! Choose again`);
     } else if (p1.suit === 'heart' && p2.suit === 'spade') {
       player2.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point`);
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point! Choose again`);
 // club
     } else if (p1.suit === 'club' && p2.suit === 'diamond') {
       player1.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point`);
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player1.name} gets a point! Choose again`);
     } else if (p1.suit === 'club' && p2.suit === 'heart') {
       player2.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point`);
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point! Choose again`);
     } else if (p1.suit === 'club' && p2.suit === 'spade') {
       player2.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point`);
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point! Choose again`);
 // diamond
     } else if (p1.suit === 'diamond' && p2.suit === 'club') {
       player2.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point`);
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point! Choose again`);
     } else if (p1.suit === 'diamond' && p2.suit === 'heart') {
       player2.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point`);
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point! Choose again`);
     } else if (p1.suit === 'diamond' && p2.suit === 'spade') {
       player2.score += 1;
-      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point`);
+      winnerAnnounced.insertAdjacentHTML('afterbegin', `${player2.name} gets a point! Choose again`);
     } 
   }
 }
@@ -172,7 +172,6 @@ const winnerAnnounced = document.querySelector('.winner');
 const infoIcon = document.querySelector('#info-icon');
 const exitIcon = document.querySelector('#exit-icon');
 const infoCard = document.querySelector('#info-card');
-const refreshButton = document.querySelector('#refresh-button');
 // sound effects
 const clickSound = document.querySelector('#click-sound');
 const shuffleSound = document.querySelector('#shuffle-sound');
@@ -183,7 +182,7 @@ const winnerBanner = document.querySelector('#winner-banner');
 const loserBanner = document.querySelector('#loser-banner');
 
 
-/* -------------------- EVENT LISTENERS: INFO ICON/REFRESH ---------------------- */
+/* -------------------- EVENT LISTENERS: INFO ICON ---------------------- */
 
 // click info icon to get game info
 infoIcon.addEventListener('click', function(event) {
@@ -199,11 +198,6 @@ exitIcon.addEventListener('click', function(event) {
   infoCard.style.display = 'none';
   infoIcon.style.display = 'flex';
   exitIcon.style.display = 'none';
-})
-
-// refresh to start game over - need to add functions
-refreshButton.addEventListener('click', function(event) {
-  clickSound.play();
 })
 
 
@@ -226,7 +220,6 @@ function playRoom() {
   cardsContainer.style.display = 'flex';
   scoreTab.style.display = 'flex';
   infoIcon.style.display = 'flex';
-  refreshButton.style.display = 'flex';
 }
 
 
