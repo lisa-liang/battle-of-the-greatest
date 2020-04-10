@@ -15,6 +15,11 @@ body {
     min-width: 1440px;
 }
 
+#logo {
+    width: 30%;
+    margin: 4% 35% 0;
+}
+
 button {
     border-width: 5px;
     font-family: 'Bangers', cursive;
@@ -24,8 +29,7 @@ button {
     background-color : #DC4734;
     color : white;
     padding : 15px 100px;
-    margin-left: 37%;
-    margin-top: 200px;
+    margin: 1% 36%;
 }
 
 button:hover {
@@ -61,7 +65,17 @@ button:hover {
     color: whitesmoke;
     font-size: 30px;
     letter-spacing: 3px;
-    margin: 1% 40% 4%;
+    margin: 2% 40% 4%;
+    justify-content: space-evenly;
+    display: none;
+}
+
+.winner {
+    color: whitesmoke;
+    font-size: 50px;
+    letter-spacing: 3px;
+    margin: 2% 0 3%;
+    justify-content: space-evenly;
     display: none;
 }
 
@@ -97,3 +111,4 @@ img.cards {
 .p2-score {
     float: right;
 }
+

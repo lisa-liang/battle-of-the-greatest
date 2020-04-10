@@ -86,53 +86,54 @@ function deal(player) {
 function compare() {
   let p1 = player1.card[0][0];
   let p2 = player2.card[0][0];
+  
   if (p1.value > p2.value) {
-    p1.score += 1;
-    console.log('Player one gets a point');
+    player1.score += 1;
+    winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 1 GETS A POINT');
   } else if (p1.value < p2.value) {
-    p2.score += 1;
-    console.log('Player two gets a point');
+    player2.score += 1;
+    winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 2 GETS A POINT');
   } else {
 // spade
     if (p1.suit === 'spade' && p2.suit === 'diamond') {
-      p1.score += 1;
-      console.log('Player one gets a point');
+      player1.score += 1;
+      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 1 GETS A POINT');
     } else if (p1.suit === 'spade' && p2.suit === 'club') {
-      p1.score += 1;
-      console.log('Player one gets a point');
+      player1.score += 1;
+      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 1 GETS A POINT');
     } else if (p1.suit === 'spade' && p2.suit === 'heart') {
-      p1.score += 1;
-      console.log('Player one gets a point');
+      player1.score += 1;
+      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 1 GETS A POINT');
 // hearts
     } else if (p1.suit === 'heart' && p2.suit === 'diamond') {
-      p1.score += 1;
-      console.log('Player one gets a point');
+      player1.score += 1;
+      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 1 GETS A POINT');
     } else if (p1.suit === 'heart' && p2.suit === 'club') {
-      p1.score += 1;
-      console.log('Player one gets a point');
+      player1.score += 1;
+      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 1 GETS A POINT');
     } else if (p1.suit === 'heart' && p2.suit === 'spade') {
-      p2.score += 1;
-      console.log('Player two gets a point');
+      player2.score += 1;
+      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 2 GETS A POINT');
 // club
     } else if (p1.suit === 'club' && p2.suit === 'diamond') {
-      p1.score += 1;
-      console.log('Player one gets a point');
+      player1.score += 1;
+      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 1 GETS A POINT');
     } else if (p1.suit === 'club' && p2.suit === 'heart') {
-      p2.score += 1;
-      console.log('Player two gets a point');
+      player2.score += 1;
+      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 2 GETS A POINT');
     } else if (p1.suit === 'club' && p2.suit === 'spade') {
-      p2.score += 1;
-      console.log('Player two gets a point');
+      player2.score += 1;
+      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 2 GETS A POINT');
 // diamond
     } else if (p1.suit === 'diamond' && p2.suit === 'club') {
-      p2.score += 1;
-      console.log('Player two gets a point');
+      player2.score += 1;
+      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 2 GETS A POINT');
     } else if (p1.suit === 'diamond' && p2.suit === 'heart') {
-      p2.score += 1;
-      console.log('Player two gets a point');
+      player2.score += 1;
+      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 2 GETS A POINT');
     } else if (p1.suit === 'diamond' && p2.suit === 'spade') {
-      p2.score += 1;
-      console.log('Player two gets a point');
+      player2.score += 1;
+      winnerAnnounced.insertAdjacentHTML('afterbegin', 'PLAYER 2 GETS A POINT');
     } 
   }
 }
@@ -150,17 +151,19 @@ const buttonElement = document.querySelector('#start-button');
 const stackedCards = document.querySelector('#stacked-cards');
 const directions = document.querySelector('.direction');
 const cardsContainer = document.querySelector('.card-container');
-const title = document.querySelector('#title');
+const logo = document.querySelector('#logo');
 const scoreTab = document.querySelector('.score-tab');
+const winnerAnnounced = document.querySelector('.winner');
+const p1Score = document.querySelector('.p1-score');
+const p2Score = document.querySelector('.p2-score');
 
 
 /* start button event listener */
 buttonElement.addEventListener('click', function(event) {
   createDeck();  
   shuffle();
-      // using none as a placeholder for now
   buttonElement.style.display = 'none';
-  title.style.display = 'none';
+  logo.style.display = 'none';
   stackedCards.style.display = 'flex';
   directions.style.display = 'flex';
   cardsContainer.style.display = 'flex';
@@ -168,17 +171,26 @@ buttonElement.addEventListener('click', function(event) {
 })
 
 /* stacked card event listener */
+// make a for loop for 5 times
 stackedCards.addEventListener('click', function(event) {
   deal(player1);
   deal(player2);
   playerCard.insertAdjacentHTML('afterbegin', `<img class="cards" src="${player1.card[0][0].imageSrc}"/>`)
   compCard.insertAdjacentHTML('afterbegin', `<img class="cards" src="${player2.card[0][0].imageSrc}"/>`) 
   compare();
+  directions.style.display = 'none';
+  winnerAnnounced.style.display = 'flex';
+ // update scores
+  p1Score.innerHTML = `Player 1 : ${player1.score}`;
+  p2Score.innerHTML = `Player 2 : ${player2.score}`;
+
+  
 
   // console check
   // console.log(player1);
   // console.log(player2);
+  // console.log(player1.score)
+  // console.log(player2.score)
 })
-
 
 
