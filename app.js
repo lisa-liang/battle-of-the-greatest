@@ -140,12 +140,12 @@ function compare() {
 }
 
 
-// define variables
+// define new variables for class Player
 const player1 = new Player('Lisa');
 const player2 = new Player('Computer');
 
 
-// access DOM properties 
+/* ACCESS DOM MANIPULATION  */
 const playerCard = document.querySelector('.player-card');
 const compCard = document.querySelector('.comp-card');
 const startButton = document.querySelector('#start-button');
@@ -153,15 +153,21 @@ const stackedCards = document.querySelector('#stacked-cards');
 const directions = document.querySelector('.direction');
 const cardsContainer = document.querySelector('.card-container');
 const logo = document.querySelector('#logo');
-const scoreTab = document.querySelector('.score-tab');
-const winnerAnnounced = document.querySelector('.winner');
+// keep track of scores/winner
 const p1Score = document.querySelector('.p1-score');
 const p2Score = document.querySelector('.p2-score');
+const scoreTab = document.querySelector('.score-tab');
+const winnerAnnounced = document.querySelector('.winner');
+// icons
 const infoIcon = document.querySelector('#info-icon');
 const exitIcon = document.querySelector('#exit-icon');
 const infoCard = document.querySelector('#info-card');
+const refreshButton = document.querySelector('#refresh-button');
+// sound effects
 const clickSound = document.querySelector('#click-sound');
 const shuffleSound = document.querySelector('#shuffle-sound');
+const loserSound = document.querySelector('#loser-sound');
+const winnerSound = document.querySelector('#winner-sound');
 
 
 /* start button event listener */
@@ -172,7 +178,6 @@ startButton.addEventListener('click', function(event) {
   clearFrontPage();
   showMainPage();
 })
-
 
 
 function clearFrontPage() {
@@ -186,8 +191,10 @@ function showMainPage() {
   cardsContainer.style.display = 'flex';
   scoreTab.style.display = 'flex';
   infoIcon.style.display = 'flex';
+  refreshButton.style.display = 'flex';
 }
 
+/* EVENT LISTENERS ----------------------------------------------------- */
 // click info icon to get game info
 infoIcon.addEventListener('click', function(event) {
   clickSound.play();
@@ -202,6 +209,11 @@ exitIcon.addEventListener('click', function(event) {
   infoCard.style.display = 'none';
   infoIcon.style.display = 'flex';
   exitIcon.style.display = 'none';
+})
+
+// refresh to start game over - need to add functions
+refreshButton.addEventListener('click', function(event) {
+  clickSound.play();
 })
 
 
@@ -237,17 +249,19 @@ function announceWinner() {
 
 // update scores
 function updateScore() {
-  // final winner of the game
   p1Score.innerHTML = `${player1.name} : ${player1.score}`;
   p2Score.innerHTML = `${player2.name} : ${player2.score}`;
-
+  // announce final winner of the game
   if (player1.score === 5) {
-    winnerAnnounced.innerHTML = `${player1.name} won the game`;
+    winnerAnnounced.innerHTML = `You won the game`;
+    winnerSound.play();
   }
   if (player2.score === 5) {
-    winnerAnnounced.innerHTML = `${player2.name} won the game`;
+    winnerAnnounced.innerHTML = `You lost the game`;
+    loserSound.play();
   } 
 }
+
 
 
 
