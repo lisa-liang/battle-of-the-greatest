@@ -8,7 +8,26 @@ Battle of the Greatest is dependent on the luck of draw. Player will compete aga
 ## Wireframe
 ---
 
+Initial sketch
+---
+![initial-sketch](images/READme/wireframe.jpeg)
+
+![design](images/READme/prototype.png)
+
+
+Final
+---
 ![starting-page](images/starting-page.png)
+
+![access-info](images/access-info-card.png)
+
+![exit-info](images/exit-info.png)
+
+![game](images/game.png)
+
+![winner-page](images/winner-page.png)
+
+![loser-page](images/loser.png)
 
 
 ## Information tab:
