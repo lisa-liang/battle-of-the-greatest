@@ -85,8 +85,10 @@ function deal(player) {
 }
 
 function compare() {
-  let p1 = player1.card[0][0];
-  let p2 = player2.card[0][0];
+  let p1 = player1.card[roundTracking][0];
+  let p2 = player2.card[roundTracking][0];
+  // reset string each round
+  winnerAnnounced.innerHTML = '';
   
   if (p1.value > p2.value) {
     player1.score += 1;
@@ -153,6 +155,8 @@ const stackedCards = document.querySelector('#stacked-cards');
 const directions = document.querySelector('.direction');
 const cardsContainer = document.querySelector('.card-container');
 const logo = document.querySelector('#logo');
+// keep track of rounds
+let roundTracking = 0;
 // keep track of scores/winner
 const p1Score = document.querySelector('.p1-score');
 const p2Score = document.querySelector('.p2-score');
@@ -173,19 +177,15 @@ const winnerSound = document.querySelector('#winner-sound');
 /* start button event listener */
 startButton.addEventListener('click', function(event) {
   clickSound.play();
+  playRoom();
   createDeck();  
   shuffle();
-  clearFrontPage();
-  showMainPage();
 })
 
 
-function clearFrontPage() {
+function playRoom() {
   startButton.style.display = 'none';
   logo.style.display = 'none';
-}
-
-function showMainPage() {
   stackedCards.style.display = 'flex';
   directions.style.display = 'flex';
   cardsContainer.style.display = 'flex';
@@ -193,6 +193,7 @@ function showMainPage() {
   infoIcon.style.display = 'flex';
   refreshButton.style.display = 'flex';
 }
+
 
 /* EVENT LISTENERS ----------------------------------------------------- */
 // click info icon to get game info
@@ -229,20 +230,32 @@ function play() {
   playerTwosTurn();
   compare();
   announceWinner();
+  roundTracking++;
 }
 
 function playerOnesTurn() {
   deal(player1);
-  playerCard.insertAdjacentHTML('afterbegin', `<img class="cards" src="${player1.card[0][0].imageSrc}"/>`);
+  const p1CardContainer = document.getElementById('p1');
+  if (p1CardContainer) {
+    p1CardContainer.remove();
+  }
+  playerCard.insertAdjacentHTML('afterbegin', `<img class="cards" id="p1" src="${player1.card[roundTracking][0].imageSrc}"/>`);
+  // player1.card.pop();
 }
 
 function playerTwosTurn() {
   deal(player2);
-  compCard.insertAdjacentHTML('afterbegin', `<img class="cards" src="${player2.card[0][0].imageSrc}"/>`);
+  const p2CardContainer = document.getElementById('p2');
+  if (p2CardContainer) {
+    p2CardContainer.remove();
+  }
+  compCard.insertAdjacentHTML('afterbegin', `<img class="cards" id="p2" src="${player2.card[roundTracking][0].imageSrc}"/>`);
+  // player2.card.pop();
 }
 
 function announceWinner() {
   directions.style.display = 'none';
+  directions.innerHTML = '';
   winnerAnnounced.style.display = 'flex';
   updateScore();
 }
@@ -253,14 +266,17 @@ function updateScore() {
   p2Score.innerHTML = `${player2.name} : ${player2.score}`;
   // announce final winner of the game
   if (player1.score === 5) {
+    winnerAnnounced.innerHTML = '';
     winnerAnnounced.innerHTML = `You won the game`;
     winnerSound.play();
   }
   if (player2.score === 5) {
+    winnerAnnounced.innerHTML = '';
     winnerAnnounced.innerHTML = `You lost the game`;
     loserSound.play();
   } 
 }
+
 
 
 
