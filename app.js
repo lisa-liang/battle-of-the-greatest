@@ -8,6 +8,8 @@ class Player {
   
 const deck = [];
 
+
+/* -------------------- BASIC FOUNDATION ---------------------- */
 function createDeck() {
   deck.push({face: 'Two', suit: 'diamond', value: 2, imageSrc: "images/diamonds/diamonds-r02.svg"})
   deck.push({face: 'Three', suit: 'diamond', value: 3, imageSrc: "images/diamonds/diamonds-r03.svg"})
@@ -78,12 +80,14 @@ function shuffle() {
     return deck;
 }
 
+// deal one card per player
 function deal(player) {
     const cardInHand = deck.splice(0,1);
     player.card.push(cardInHand);
     shuffleSound.play();
 }
 
+// compare card values and suits
 function compare() {
   let p1 = player1.card[roundTracking][0];
   let p2 = player2.card[roundTracking][0];
@@ -142,12 +146,14 @@ function compare() {
 }
 
 
-// define new variables for class Player
+/* -------------------- VARIABLE ASSIGNMENTS ------------------*/
+
+// assign new variables for class Player
 const player1 = new Player('Lisa');
 const player2 = new Player('Computer');
 
 
-/* ACCESS DOM MANIPULATION  */
+/* -------------------- ACCESS DOM MANIPULATION ---------------------- */
 const playerCard = document.querySelector('.player-card');
 const compCard = document.querySelector('.comp-card');
 const startButton = document.querySelector('#start-button');
@@ -174,28 +180,8 @@ const loserSound = document.querySelector('#loser-sound');
 const winnerSound = document.querySelector('#winner-sound');
 
 
-/* start button event listener */
-startButton.addEventListener('click', function(event) {
-  clickSound.play();
-  playRoom();
-  createDeck();  
-  shuffle();
-})
+/* -------------------- EVENT LISTENERS: INFO ICON/REFRESH ---------------------- */
 
-
-function playRoom() {
-  startButton.style.display = 'none';
-  logo.style.display = 'none';
-  stackedCards.style.display = 'flex';
-  directions.style.display = 'flex';
-  cardsContainer.style.display = 'flex';
-  scoreTab.style.display = 'flex';
-  infoIcon.style.display = 'flex';
-  refreshButton.style.display = 'flex';
-}
-
-
-/* EVENT LISTENERS ----------------------------------------------------- */
 // click info icon to get game info
 infoIcon.addEventListener('click', function(event) {
   clickSound.play();
@@ -204,7 +190,7 @@ infoIcon.addEventListener('click', function(event) {
   exitIcon.style.display = 'flex';
 })
 
-// info icon turns into an exit button. click on exit button to exit game info
+// info icon turns into an exit button. Click on exit button to exit game info
 exitIcon.addEventListener('click', function(event) {
   clickSound.play();
   infoCard.style.display = 'none';
@@ -218,12 +204,35 @@ refreshButton.addEventListener('click', function(event) {
 })
 
 
-/* stacked card event listener */
-// make a for loop for 5 times
+/* -------------------- EVENT LISTENERS: TRANSITION TO PLAYROOM ---------------------- */
+
+/* start button */
+startButton.addEventListener('click', function(event) {
+  clickSound.play();
+  playRoom();
+  createDeck();  
+  shuffle();
+})
+
+// transition from start page to main play room
+function playRoom() {
+  startButton.style.display = 'none';
+  logo.style.display = 'none';
+  stackedCards.style.display = 'flex';
+  directions.style.display = 'flex';
+  cardsContainer.style.display = 'flex';
+  scoreTab.style.display = 'flex';
+  infoIcon.style.display = 'flex';
+  refreshButton.style.display = 'flex';
+}
+
+
+/* -------------------- EVENT LISTENERS: PLAY GAME --------------------- */
+
+/* play the game - choose card from deck */
 stackedCards.addEventListener('click', function(event) {
   play();
 })
-
 
 function play() {
   playerOnesTurn();
@@ -236,11 +245,12 @@ function play() {
 function playerOnesTurn() {
   deal(player1);
   const p1CardContainer = document.getElementById('p1');
+  // conditional - if player1 card container contains a card, remove and deal a new one
   if (p1CardContainer) {
     p1CardContainer.remove();
   }
+  // attach card img of the dealt card to the card container
   playerCard.insertAdjacentHTML('afterbegin', `<img class="cards" id="p1" src="${player1.card[roundTracking][0].imageSrc}"/>`);
-  // player1.card.pop();
 }
 
 function playerTwosTurn() {
@@ -250,9 +260,9 @@ function playerTwosTurn() {
     p2CardContainer.remove();
   }
   compCard.insertAdjacentHTML('afterbegin', `<img class="cards" id="p2" src="${player2.card[roundTracking][0].imageSrc}"/>`);
-  // player2.card.pop();
 }
 
+// winner of each round announced - final winner announced when one player gains 5 points
 function announceWinner() {
   directions.style.display = 'none';
   directions.innerHTML = '';
@@ -260,7 +270,7 @@ function announceWinner() {
   updateScore();
 }
 
-// update scores
+// update scores each round 
 function updateScore() {
   p1Score.innerHTML = `${player1.name} : ${player1.score}`;
   p2Score.innerHTML = `${player2.name} : ${player2.score}`;
