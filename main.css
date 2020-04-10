@@ -2,14 +2,6 @@
     box-sizing: border-box;
 }
 
-/* 
-- need to make sure window does not shift text when minimized 
-    - minimum width 
-
-- make sure everything is compatible w/ other displays/online platform
-*/
-
-
 body {
     height: 100vh;
     margin: 0;      /* remove automatic margin */
@@ -23,6 +15,7 @@ body {
     margin: 4% 35% 0;
 }
 
+/* BUTTONS: start, info icon, exit buttoon */
 button {
     border-width: 5px;
     font-family: 'Bangers', Helvetica;
@@ -40,6 +33,7 @@ button {
     background: #434343;
     letter-spacing: 2px;
     box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    -webkit-transition-duration: all 0.4s ease 0s; /* Safari */
     transition: all 0.4s ease 0s;
 }
 
@@ -60,6 +54,13 @@ button {
     display: none;
 }
 
+#info-icon:hover {
+    background: #434343;
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    -webkit-transition-duration: all 0.4s ease 0s; /* Safari */
+    transition: all 0.4s ease 0s;
+}
+
 #exit-icon {
     font-family: 'Londrina Shadow', cursive;
     font-family: 'Playfair Display', serif;
@@ -75,6 +76,13 @@ button {
     top: 80px;
     left: 40px;
     display: none;
+}
+
+#exit-icon:hover {
+    background: #434343;
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    -webkit-transition-duration: all 0.4s ease 0s; /* Safari */
+    transition: all 0.4s ease 0s;
 }
 
 #info-card {
@@ -101,7 +109,6 @@ button {
 }
 
 #stacked-cards {
-    /* position: absolute; */
     width: 730px;
     height: 150px;
     box-shadow: 10px 5px 5px rgb(48, 46, 46);
@@ -111,8 +118,16 @@ button {
 }
 
 #stacked-cards:hover {
-    /* zooms into stacked cards to make it more interactive */
-    transform: scale(1.05);     
+    transform: scale(1.05);     /* zooms into stacked cards */
+}
+
+.direction {
+    color: whitesmoke;
+    font-size: 30px;
+    letter-spacing: 3px;
+    margin: 2% 40% 4%;
+    justify-content: space-evenly;
+    display: none;
 }
 
 #winner-banner {
@@ -131,15 +146,6 @@ button {
     display: none;
 }
 
-.direction {
-    color: whitesmoke;
-    font-size: 30px;
-    letter-spacing: 3px;
-    margin: 2% 40% 4%;
-    justify-content: space-evenly;
-    display: none;
-}
-
 .winner {
     color: whitesmoke;
     font-size: 50px;
@@ -153,12 +159,13 @@ button {
     height: 40px;
 }
 
-/* class="cards" created in app js 69-71 */
+/* class="cards" created in app js 249 & 258 */
 img.cards {
     display: block;
     width: 100%;
 }
 
+/* keep track of scores */
 .score {
     background-color: white;
     display: inline-block;
