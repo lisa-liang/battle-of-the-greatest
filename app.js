@@ -237,9 +237,19 @@ function announceWinner() {
 
 // update scores
 function updateScore() {
+  // final winner of the game
   p1Score.innerHTML = `${player1.name} : ${player1.score}`;
   p2Score.innerHTML = `${player2.name} : ${player2.score}`;
+
+  if (player1.score === 5) {
+    winnerAnnounced.innerHTML = `${player1.name} won the game`;
+  }
+  if (player2.score === 5) {
+    winnerAnnounced.innerHTML = `${player2.name} won the game`;
+  } 
 }
+
+
 
 
 
