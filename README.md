@@ -1,17 +1,14 @@
-# project-zero
+## Battle of the Greatest
 
 ## Overview 
 ---
-Battle of the Greatest is dependent on the luck of draw. Two players will compete against each other to see who picks the higher card. First to get to 5 points wins the game.
+Battle of the Greatest is dependent on the luck of draw. Player will compete against computer to see who picks the higher card. First to get to 5 points wins the game.
 
 
 ## Wireframe
 ---
 
-![scratch](images/READme/wireframe.jpeg)
-
-![prototype](images/READme/prototype.png)
-
+![starting-page](images/starting-page.png)
 
 
 ## Information tab:
